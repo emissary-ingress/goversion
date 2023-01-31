@@ -1,3 +1,7 @@
+// Copyright (C) 2021-2022  Ambassador Labs
+//
+// SPDX-License-Identifier: Apache-2.0
+
 package main
 
 import (
@@ -18,6 +22,7 @@ import (
 // errors returned from (*cobra.Command).Execute will be execution errors, not usage errors.
 func FlagErrorFunc(cmd *cobra.Command, err error) error {
 	// Copyright note: This code was originally written by LukeShu for Telepresence.
+	// https://github.com/telepresenceio/telepresence/commit/3b63073ceafae6b548c664a83f7ac90497eab2ae
 	if err == nil {
 		return nil
 	}
