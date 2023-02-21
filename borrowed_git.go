@@ -1,4 +1,13 @@
-// This file is a lightly modified subset of Go 1.17 cmd/go/internal/modfetch/codehost/git.go
+// Copyright (C) 2018 The Go Authors. All rights reserved.
+// Copyright (C) 2021-2022  Ambassador Labs
+//
+// Use of this source code is governed by a BSD-style
+// license that can be found in the NOTICE file.
+//
+// SPDX-License-Identifier: BSD-3-Clause
+//
+// This file is a lightly modified subset of Go 1.17
+// cmd/go/internal/modfetch/codehost/git.go
 
 package main
 

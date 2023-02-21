@@ -1,8 +1,13 @@
-// This file is a verbatim subset of Go 1.17 cmd/go/internal/modfetch/codehost/codehost.go
-
-// Copyright 2018 The Go Authors. All rights reserved.
+// Copyright (C) 2018 The Go Authors. All rights reserved.
+// Copyright (C) 2021  Ambassador Labs
+//
 // Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
+// license that can be found in the NOTICE file.
+//
+// SPDX-License-Identifier: BSD-3-Clause
+//
+// This file is a verbatim subset of Go 1.17
+// cmd/go/internal/modfetch/codehost/codehost.go
 
 package main
 

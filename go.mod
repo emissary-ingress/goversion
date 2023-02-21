@@ -1,3 +1,7 @@
+// Copyright (C) 2022  Ambassador Labs
+//
+// SPDX-License-Identifier: Apache-2.0
+
 module github.com/emissary-ingress/goversion
 
 go 1.18
