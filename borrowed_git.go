@@ -1,5 +1,6 @@
 // Copyright (C) 2018 The Go Authors. All rights reserved.
 // Copyright (C) 2021-2022  Ambassador Labs
+// Copyright (C) 2023  Luke Shumaker <lukeshu@lukeshu.com>
 //
 // Use of this source code is governed by a BSD-style
 // license that can be found in the NOTICE file.
@@ -124,8 +125,7 @@ func mostRecentTag(ctx context.Context, commit *commitInfo, dirPrefix string) (s
 		return "", err
 	}
 	if highest == "" {
-		return "", fmt.Errorf("no %q tags are reachable from %q",
-			dirPrefix+"v{SEMVER}", commit.Hash)
+		return "", nil
 	}
 	return dirPrefix + highest, nil
 }
@@ -144,8 +144,7 @@ func mostRecentTags(ctx context.Context, commit *commitInfo, dirPrefix string) (
 		return nil, err
 	}
 	if len(semtags) == 0 {
-		return nil, fmt.Errorf("no %q tags are reachable from %q",
-			dirPrefix+"v{SEMVER}", commit.Hash)
+		return nil, nil
 	}
 	sort.SliceStable(semtags, func(i, j int) bool {
 		return semver.Compare(semtags[i], semtags[j]) > 0

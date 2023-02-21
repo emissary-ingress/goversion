@@ -1,4 +1,5 @@
 // Copyright (C) 2021-2022  Ambassador Labs
+// Copyright (C) 2023  Luke Shumaker <lukeshu@lukeshu.com>
 //
 // SPDX-License-Identifier: Apache-2.0
 
@@ -51,7 +52,9 @@ func Describe(ctx context.Context, commitish, dirPrefix, dirtyMarker string, max
 	if maxDescriptions == 1 {
 		var parentTag string
 		parentTag, err = mostRecentTag(ctx, commitInfo, dirPrefix)
-		parentTags = []string{parentTag}
+		if parentTag != "" {
+			parentTags = []string{parentTag}
+		}
 	} else {
 		parentTags, err = mostRecentTags(ctx, commitInfo, dirPrefix)
 	}
@@ -92,9 +95,20 @@ func Describe(ctx context.Context, commitish, dirPrefix, dirtyMarker string, max
 
 		descriptions = append(descriptions, goVersionStr)
 		if maxDescriptions > 0 && len(descriptions) >= maxDescriptions {
-			break
+			return descriptions, nil
 		}
 	}
+
+	// v0.0.0 without a tag.
+	goVersionStr := module.PseudoVersion(
+		"v0",
+		"",
+		commitInfo.Time,
+		ShortenSHA1(commitInfo.Hash))
+	if isDirty {
+		goVersionStr += dirtyMarker
+	}
+	descriptions = append(descriptions, goVersionStr)
 
 	return descriptions, nil
 }
